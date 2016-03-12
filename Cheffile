@@ -14,8 +14,11 @@ cookbook 'sudo'
 cookbook 'sysdig'
 cookbook 'sysstat'
 cookbook 'sysctl', '~> 0.7.0'
-cookbook 'mongodb', '~> 0.16.2'
+
 
 ## Role specific cookbooks
 cookbook '2k6-base',                          :path => 'site-cookbooks/2k6-base'
 cookbook '2k6-mongodb',                       :path => 'site-cookbooks/2k6-mongodb'
+
+## MongoDB 3.0
+cookbook 'mongodb',                           :git => 'git@github.com:nilroy/chef-mongodb.git', :ref => '3.0'
