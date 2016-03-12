@@ -2,6 +2,7 @@
 # Cookbook Name:: 2k6-base
 # Recipe:: default
 #
+# Copyright:: 2016, Nilanjan Roy (<nilu.besu@gmail.com>)
 # Authors:
 #       Nilanjan Roy <nilu.besu@gmail.com>
 #
