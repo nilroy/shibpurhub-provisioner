@@ -8,7 +8,7 @@ function initialize() {
   curl -O https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.04/x86_64/chef_12.2.1-1_amd64.deb
   sudo dpkg --install chef_12.2.1-1_amd64.deb
   bundle install
-  libraraian-chef install --verbose
+  librarian-chef install --verbose
 }
 
 function main() {
