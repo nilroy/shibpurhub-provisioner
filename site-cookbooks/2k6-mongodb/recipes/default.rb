@@ -18,7 +18,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+node.set['2k6']['mongodb']['port'] = 27017
 node.set['mongodb']['config']['replSet']            = '2k6'
 node.set['mongodb']['cluster_name']                 = '2k6'
 node.set['mongodb']['auto_configure']['replicaset'] = false
@@ -46,7 +46,11 @@ end
 
 
 include_recipe 'mongodb::mongodb_org_30_repo'
-include_recipe 'mongodb::replicaset'
+include_recipe 'mongodb::default'
+
+mongodb_instance "mongodb" do
+  port node['2k6']['mongodb']['port']
+end
 
 # Delete default data directories if they are not used
 %w{/var/lib/mongodb /var/lib/mongo}.each do |d|
