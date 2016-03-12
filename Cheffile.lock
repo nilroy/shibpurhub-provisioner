@@ -14,6 +14,7 @@ SITE
     build-essential (2.3.1)
       7-zip (>= 0.0.0)
     chef-solo-search (0.5.1)
+    chef-sugar (3.3.0)
     chef_handler (1.3.0)
     cron (1.7.5)
     device-mapper (0.1.0)
@@ -34,8 +35,11 @@ SITE
       sysctl (>= 0.0.0)
       yum-epel (>= 0.0.0)
     dpkg_autostart (0.2.0)
-    elasticsearch (0.3.14)
-      ark (>= 0.2.4)
+    elasticsearch (2.2.1)
+      apt (>= 0.0.0)
+      ark (>= 0.0.0)
+      chef-sugar (>= 0.0.0)
+      yum (>= 0.0.0)
     git (4.3.7)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
@@ -82,6 +86,16 @@ SITE
     yum-epel (0.6.6)
       yum (~> 3.10.0)
 
+GIT
+  remote: git@github.com:nilroy/chef-mongodb.git
+  ref: 3.0
+  sha: 6d9ffd7dbbf1a847a72ab215d96f3a398533782d
+  specs:
+    mongodb (0.16.3)
+      apt (>= 1.8.2)
+      python (>= 0.0.0)
+      yum (>= 3.0)
+
 PATH
   remote: site-cookbooks/2k6-base
   specs:
@@ -94,17 +108,27 @@ PATH
       sysdig (>= 0.0.0)
       sysstat (>= 0.0.0)
 
+PATH
+  remote: site-cookbooks/2k6-mongodb
+  specs:
+    2k6-mongodb (0.0.1)
+      2k6-base (>= 0.0.0)
+      mongodb (>= 0.0.0)
+      mongodb-agents (>= 0.0.0)
+
 DEPENDENCIES
   2k6-base (>= 0)
+  2k6-mongodb (>= 0)
   apt (>= 0)
   aufs (>= 0)
   chef-solo-search (>= 0)
   cron (>= 0)
   docker (~> 0.37.0)
-  elasticsearch (~> 0.3.13)
+  elasticsearch (~> 2.2.1)
   git (>= 0)
   hostsfile (>= 0)
   java (>= 0)
+  mongodb (>= 0)
   mongodb-agents (>= 0)
   python (>= 0)
   sudo (>= 0)
