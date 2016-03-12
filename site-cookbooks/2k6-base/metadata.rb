@@ -1,0 +1,16 @@
+name             "2k6-base"
+maintainer       "Nilanjan Roy"
+maintainer_email "nilu.besu@gmail.com"
+license          "Apache 2.0"
+description      "Setup 2k6 base server"
+version          "0.0.1"
+
+recipe "2k6-base", "Setup 2k6 base server"
+
+depends "chef-solo-search"
+depends "apt"
+depends "ntp"
+depends "lvm"
+depends "sysstat"
+depends "sysdig"
+depends "python"
