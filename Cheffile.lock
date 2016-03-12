@@ -53,7 +53,7 @@ SITE
       yum (~> 3.10.0)
 
 GIT
-  remote: git@github.com:nilroy/chef-mongodb.git
+  remote: https://github.com/nilroy/chef-mongodb.git
   ref: 3.0
   sha: 6d9ffd7dbbf1a847a72ab215d96f3a398533782d
   specs:
