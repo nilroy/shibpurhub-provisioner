@@ -69,15 +69,4 @@ execute "set-clocksource-tsc" do
   retry_delay 10
 end
 
-# Set ephemeral volume readahead based on recommendations
-case node.chef_environment
-when 'prod', 'perf', 'dev'
-  puts "#{node['hostname']} #{node.chef_environment}"
-  lvm_device = "/dev/mapper/#{node['lvm']['ephemeral']['vgname'].gsub('-', '--')}-#{node['lvm']['ephemeral']['lvname']}"
-  execute "set-volume-readahead" do
-    command "blockdev --setra 32 #{lvm_device}"
-    only_if { File.exists?(lvm_device) }
-  end
-end
-
 include_recipe '2k6-mongodb::transparent_hugepage'
