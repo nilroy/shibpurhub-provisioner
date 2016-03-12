@@ -22,7 +22,6 @@
 
 include_recipe 'chef-solo-search'
 include_recipe 'apt'
-include_recipe 'auditd'
 include_recipe 'ntp'
 
 # Upgrade ntp
