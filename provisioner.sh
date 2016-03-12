@@ -35,7 +35,7 @@ exit $1
 }
 
 function arg_test() {
-  if [ -z "$env" ] ; then
+  if [ -z "$environment" ] ; then
     echo "Give Environment --env"
     exit 1
   fi
@@ -55,7 +55,7 @@ SCRIPT_NAME=$(basename $0)
 SCRIPT_HOME=$(dirname $0)
 exec 2>&1
 
-TEMP=$($GETOPT -o h,x, --long role:,env:,name: -n $SCRIPT_NAME -- "$@")
+TEMP=$(getopt -o h,x, --long role:,env:,name: -n $SCRIPT_NAME -- "$@")
 
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$TEMP"
