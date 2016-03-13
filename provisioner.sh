@@ -66,8 +66,8 @@ function arg_test() {
   fi
 
   if [ -z "$name" ] ; then
-    echo "Give Name --name"
-    exit 1
+    echo "Name not provided. Using hostname"
+    name=$(hostname)
   fi
 }
 
@@ -80,7 +80,7 @@ TEMP=$(getopt -o h,x, --long role:,env:,name: -n $SCRIPT_NAME -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$TEMP"
 
-if [ "$#" -lt 3 ]
+if [ "$#" -lt 2 ]
 then
   echo "All arguments are not passed!!" && show_options 1
 fi
