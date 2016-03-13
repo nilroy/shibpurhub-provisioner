@@ -36,3 +36,7 @@ include_recipe "elasticsearch::default"
 elasticsearch_plugin 'kopf' do
   url 'lmenezes/elasticsearch-kopf'
 end
+
+service "elasticsearch" do
+  action [:start,:enable]
+end
