@@ -19,11 +19,7 @@
 # limitations under the License.
 #
 
-node.set[:java][:jdk_version]							  = 8
-node.set[:java][:install_flavor]						= "oracle"
-node.set[:java][:oracle][:accept_oracle_download_terms]	= true
-
-include_recipe "java"
+include_recipe "2k6-elasticsearch::java"
 
 include_recipe 'sysctl::default'
 
@@ -31,7 +27,11 @@ sysctl_param 'vm.max_map_count' do
       value 262144
 end
 
-include_recipe "elasticsearch::default"
+elasticsearch_user 'elasticsearch'
+elasticsearch_install 'elasticsearch' do
+  type node['elasticsearch']['install_type'].to_sym
+end
+
 elasticsearch_configure 'elasticsearch' do
     configuration ({
       'network.host' => '0.0.0.0'
@@ -47,6 +47,6 @@ elasticsearch_plugin 'kopf' do
 end
 
 service "elasticsearch" do
-  supports :restart, :enable
+  supports :restart => true, :enable => true
   action :nothing
 end
