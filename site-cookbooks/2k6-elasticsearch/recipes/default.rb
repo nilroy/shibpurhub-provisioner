@@ -32,11 +32,21 @@ sysctl_param 'vm.max_map_count' do
 end
 
 include_recipe "elasticsearch::default"
+elasticsearch_configure 'elasticsearch' do
+    configuration ({
+      'network.host' => '0.0.0.0'
+    })
+    notifies :restart, "service[elasticsearch]", :delayed
+end
+elasticsearch_service 'elasticsearch' do
+  notifies :restart, "service[elasticsearch]", :delayed
+end
 
 elasticsearch_plugin 'kopf' do
   url 'lmenezes/elasticsearch-kopf'
 end
 
 service "elasticsearch" do
-  action [:start,:enable]
+  supports :restart, :enable
+  action :nothing
 end
