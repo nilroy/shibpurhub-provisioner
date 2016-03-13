@@ -17,6 +17,7 @@ cookbook 'sysctl', '~> 0.7.0'
 ## Role specific cookbooks
 cookbook '2k6-base',                          :path => 'site-cookbooks/2k6-base'
 cookbook '2k6-mongodb',                       :path => 'site-cookbooks/2k6-mongodb'
+cookbook '2k6-elasticsearch',                 :path => 'site-cookbooks/2k6-elasticsearch'
 
 ## MongoDB 3.0
 cookbook 'mongodb',                           :git => 'https://github.com/nilroy/chef-mongodb.git', :ref => '3.0'
