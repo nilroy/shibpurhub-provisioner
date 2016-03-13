@@ -21,8 +21,9 @@ function initialize() {
   sudo apt-get upgrade -y
   sudo apt-get install -y git curl wget vim nano python-pip
   sudo pip install --upgrade pip
-  curl -O https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.04/x86_64/chef_12.2.1-1_amd64.deb
-  sudo dpkg --install chef_12.2.1-1_amd64.deb && rm -rf chef_12.2.1-1_amd64.deb
+  mkdir -m 755 /tmp/chef-solo
+  curl  https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.04/x86_64/chef_12.2.1-1_amd64.deb -o /tmp/chef-solo/chef_12.2.1-1_amd64.deb
+  sudo dpkg --install /tmp/chef-solo/chef_12.2.1-1_amd64.deb
   bundle install
   librarian-chef install --verbose
 }
@@ -31,7 +32,6 @@ function main() {
   echo "Initial installation begins...."
   initialize
   echo "Provisioning $name ...."
-  mkdir -m 755 /tmp/chef-solo
   tar -czvf /tmp/chef-solo/chef-solo.tar.gz cookbooks roles data_bags environments
   cp -Rv dna /tmp/chef-solo
   cd /tmp/chef-solo
