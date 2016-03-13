@@ -1,6 +1,8 @@
 # 2k6-provisioner
 This repo contains tools and chef cookbooks to install and maintain 2k6 systems.
 
+##Supporting OS
+* Ubuntu 14.04
 ## Provisioning
 A user need sudo permission to provision
 
