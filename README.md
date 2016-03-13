@@ -8,4 +8,4 @@ A user need sudo permission to provision
 
 `#./provisioner.sh --env <environment> --role <role> --name <servername>`
 
-> Note: Roles can be mongodb,elasticsearch or all (includes both mongodb and elasticsearch)
+> Note: Roles can be mongodb,elasticsearch or all (includes both mongodb and elasticsearch). Environment can be staging/prod.
