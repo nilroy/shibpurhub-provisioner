@@ -34,3 +34,21 @@ end
 python_pip "pip" do
   action :upgrade
 end
+
+#Install ruby 2.2.x
+package "software-properties-common"
+
+apt_repository "ruby2.2" do
+  uri 'ppa:brightbox/ruby-ng'
+  components ['main']
+  distribution 'trusty'
+  action :add
+end
+
+%w{ruby2.2 ruby2.2-dev}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
+gem_package "bundler"

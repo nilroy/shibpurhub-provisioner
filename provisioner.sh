@@ -19,7 +19,7 @@
 function initialize() {
   sudo apt-get update -y
   sudo apt-get upgrade -y
-  sudo apt-get install -y git curl wget vim nano python-pip
+  sudo apt-get install -y git curl wget vim nano python-pip ruby bundler
   sudo pip install --upgrade pip
   mkdir -m 755 /tmp/chef-solo
   curl  https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.04/x86_64/chef_12.2.1-1_amd64.deb -o /tmp/chef-solo/chef_12.2.1-1_amd64.deb
