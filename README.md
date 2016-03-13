@@ -9,8 +9,8 @@ A user need sudo permission to provision
 
 `#./provisioner.sh --env <environment> --role <role> --name <servername>`
 
-> Note: Roles can be mongodb,elasticsearch or all (includes both mongodb and elasticsearch). Environment can be staging/prod.
-You can find all roles in [roles](https://github.com/nilroy/2k6-provisioner/tree/master/roles)
+> Note: Roles can be mongodb,elasticsearch or mongo_es (includes both mongodb and elasticsearch). Environment can be staging/prod.
+You can find all roles in [roles](https://github.com/nilroy/2k6-provisioner/tree/master/dna)
 
 
 ## Contibuting
