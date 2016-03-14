@@ -55,7 +55,7 @@ SITE
 GIT
   remote: https://github.com/nilroy/chef-mongodb.git
   ref: 3.0
-  sha: 150ee18e688dc32fd24061d2fa21598ffe23e369
+  sha: 41d5c0d7362a4532a23a0db8fd30c503a5227b71
   specs:
     mongodb (0.16.3)
       apt (>= 1.8.2)
