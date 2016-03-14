@@ -60,8 +60,8 @@ exit $1
 
 function arg_test() {
   if [ -z "$environment" ] ; then
-    echo "Give Environment --env"
-    exit 1
+    echo "Choosing default environment staging"
+    environment="staging"
   fi
 
   if [ -z "$role" ] ; then
