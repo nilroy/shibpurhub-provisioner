@@ -52,9 +52,6 @@ end
 
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::replicaset'
-mongodb_instance "mongodb" do
-  port node['2k6']['mongodb']['port']
-end
 
 include_recipe 'mongodb::user_management'
 
