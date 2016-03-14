@@ -52,11 +52,11 @@ end
 
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::replicaset'
-include_recipe 'mongodb::user_management'
-
 mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
 end
+
+include_recipe 'mongodb::user_management'
 
 # Delete default data directories if they are not used
 %w{/var/lib/mongodb /var/lib/mongo}.each do |d|
