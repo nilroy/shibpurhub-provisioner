@@ -34,7 +34,7 @@ node.set['mongodb']['sysconfig']['CONFIGFILE']  = node['mongodb']['dbconfig_file
 
 # Disable TTL monitor as it will kill the performance
 node.set['mongodb']['config']['setParameter'] = 'ttlMonitorEnabled=false'
-
+node.set['mongodb']['config']['auth'] = true
 
 # Set nssize
 case node.chef_environment
@@ -46,7 +46,15 @@ end
 
 
 include_recipe 'mongodb::mongodb_org_30_repo'
-include_recipe 'mongodb::default'
+include_recipe 'mongodb::replicaset'
+
+
+r = chef_gem "mongo" do
+  action :nothing
+end
+r.run_action(:install)
+
+include_recipe 'mongodb::user_management'
 
 mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
