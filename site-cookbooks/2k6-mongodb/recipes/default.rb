@@ -54,6 +54,11 @@ r = chef_gem "mongo" do
 end
 r.run_action(:install)
 
+q = gem_package "mongo" do
+  action :nothing
+end
+q.run_action(:install)
+
 include_recipe 'mongodb::user_management'
 
 mongodb_instance "mongodb" do
