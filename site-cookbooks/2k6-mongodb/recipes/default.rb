@@ -19,11 +19,6 @@
 # limitations under the License.
 #
 node.set['2k6']['mongodb']['port'] = 27017
-node.set['mongodb']['config']['replSet']            = '2k6'
-node.set['mongodb']['cluster_name']                 = '2k6'
-node.set['mongodb']['auto_configure']['replicaset'] = false
-node.set['mongodb']['auto_configure']['sharding']   = false
-
 node.set['mongodb']['dbconfig_file']            = '/etc/mongod.conf'
 node.set['mongodb']['config']['logpath']        = '/var/log/mongodb/mongod.log'
 node.set['mongodb']['sysconfig_file']           = '/etc/default/mongod'
@@ -51,7 +46,11 @@ end
 
 
 include_recipe 'mongodb::mongodb_org_30_repo'
-include_recipe 'mongodb::replicaset'
+include_recipe 'mongodb::default'
+
+mongodb_instance "mongodb" do
+  port node['2k6']['mongodb']['port']
+end
 
 include_recipe 'mongodb::user_management'
 
