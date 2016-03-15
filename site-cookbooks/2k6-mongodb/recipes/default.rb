@@ -44,18 +44,10 @@ when 'staging'
   node.set['mongodb']['config']['nssize'] = 32
 end
 
+node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--auth --config #{node['mongodb']['dbconfig_file']}"
 
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::default'
-
-template "/etc/default/mongod" do
-  source "mongod.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-  notifies :restart, "service[mongod]", :delayed
-end
-
 mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
 end
