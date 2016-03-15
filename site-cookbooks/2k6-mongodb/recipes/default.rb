@@ -24,7 +24,7 @@ node.set['mongodb']['config']['logpath']        = '/var/log/mongodb/mongod.log'
 node.set['mongodb']['sysconfig_file']           = '/etc/default/mongod'
 node.set['mongodb']['default_init_name']        = 'mongod'
 node.set['mongodb']['instance_name']            = 'mongod'
-node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--config #{node['mongodb']['dbconfig_file']}"
+node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--auth --config #{node['mongodb']['dbconfig_file']}"
 node.set['mongodb']['sysconfig']['CONFIGFILE']  = node['mongodb']['dbconfig_file']
 
 # Disable TTL monitor as it will kill the performance
@@ -35,7 +35,6 @@ node.set['mongodb']['ruby_gems'] = {
   :bson_ext => '1.12.5'
 }
 
-
 # Set nssize
 case node.chef_environment
 when 'prod'
@@ -43,8 +42,6 @@ when 'prod'
 when 'staging'
   node.set['mongodb']['config']['nssize'] = 32
 end
-
-node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--auth --config #{node['mongodb']['dbconfig_file']}"
 
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::default'
