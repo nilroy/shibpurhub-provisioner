@@ -19,22 +19,21 @@
 # limitations under the License.
 #
 node.set['2k6']['mongodb']['port'] = 27017
-node.set['mongodb']['config']['replSet']            = '2k6'
-node.set['mongodb']['cluster_name']                 = '2k6'
-node.set['mongodb']['auto_configure']['replicaset'] = false
-node.set['mongodb']['auto_configure']['sharding']   = false
-
 node.set['mongodb']['dbconfig_file']            = '/etc/mongod.conf'
 node.set['mongodb']['config']['logpath']        = '/var/log/mongodb/mongod.log'
 node.set['mongodb']['sysconfig_file']           = '/etc/default/mongod'
 node.set['mongodb']['default_init_name']        = 'mongod'
 node.set['mongodb']['instance_name']            = 'mongod'
-node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--config #{node['mongodb']['dbconfig_file']}"
+node.set['mongodb']['sysconfig']['DAEMON_OPTS'] = "--auth --config #{node['mongodb']['dbconfig_file']}"
 node.set['mongodb']['sysconfig']['CONFIGFILE']  = node['mongodb']['dbconfig_file']
 
 # Disable TTL monitor as it will kill the performance
 node.set['mongodb']['config']['setParameter'] = 'ttlMonitorEnabled=false'
-
+node.set['mongodb']['config']['auth'] = true
+node.set['mongodb']['ruby_gems'] = {
+  :mongo => '1.12.5',
+  :bson_ext => '1.12.5'
+}
 
 # Set nssize
 case node.chef_environment
@@ -44,10 +43,8 @@ when 'staging'
   node.set['mongodb']['config']['nssize'] = 32
 end
 
-
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::default'
-
 mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
 end

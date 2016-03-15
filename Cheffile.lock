@@ -55,7 +55,7 @@ SITE
 GIT
   remote: https://github.com/nilroy/chef-mongodb.git
   ref: 3.0
-  sha: 6d9ffd7dbbf1a847a72ab215d96f3a398533782d
+  sha: 0ca9835650b2f182b39c3833c88b849c709ff672
   specs:
     mongodb (0.16.3)
       apt (>= 1.8.2)
@@ -75,6 +75,14 @@ PATH
       sysstat (>= 0.0.0)
 
 PATH
+  remote: site-cookbooks/2k6-elasticsearch
+  specs:
+    2k6-elasticsearch (0.0.1)
+      elasticsearch (>= 0.0.0)
+      java (>= 0.0.0)
+      sysctl (>= 0.0.0)
+
+PATH
   remote: site-cookbooks/2k6-mongodb
   specs:
     2k6-mongodb (0.0.1)
@@ -84,6 +92,7 @@ PATH
 
 DEPENDENCIES
   2k6-base (>= 0)
+  2k6-elasticsearch (>= 0)
   2k6-mongodb (>= 0)
   apt (>= 0)
   chef-solo-search (>= 0)
