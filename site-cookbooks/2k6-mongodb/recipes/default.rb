@@ -29,7 +29,6 @@ node.set['mongodb']['sysconfig']['CONFIGFILE']  = node['mongodb']['dbconfig_file
 
 # Disable TTL monitor as it will kill the performance
 node.set['mongodb']['config']['setParameter'] = 'ttlMonitorEnabled=false'
-node.set['mongodb']['config']['security'] = 'authorization=enabled'
 node.set['mongodb']['config']['auth'] = true
 node.set['mongodb']['ruby_gems'] = {
   :mongo => '1.12.5',
@@ -49,8 +48,21 @@ end
 include_recipe 'mongodb::mongodb_org_30_repo'
 include_recipe 'mongodb::default'
 
+template "/etc/default/mongod" do
+  source "mongod.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, "service[mongod]", :delayed
+end
+
 mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
+end
+
+service "mongod" do
+  supports :restart => true
+  action :nothing
 end
 
 include_recipe 'mongodb::user_management'
