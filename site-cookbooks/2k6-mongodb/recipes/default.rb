@@ -49,13 +49,6 @@ mongodb_instance "mongodb" do
   port node['2k6']['mongodb']['port']
 end
 
-service "mongod" do
-  supports :restart => true
-  action :nothing
-end
-
-include_recipe 'mongodb::user_management'
-
 # Delete default data directories if they are not used
 %w{/var/lib/mongodb /var/lib/mongo}.each do |d|
   directory d do
