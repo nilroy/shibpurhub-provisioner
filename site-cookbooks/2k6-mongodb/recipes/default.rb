@@ -29,6 +29,7 @@ node.set['mongodb']['sysconfig']['CONFIGFILE']  = node['mongodb']['dbconfig_file
 
 # Disable TTL monitor as it will kill the performance
 node.set['mongodb']['config']['setParameter'] = 'ttlMonitorEnabled=false'
+node.set['mongodb']['config']['security'] = 'authorization=enabled'
 node.set['mongodb']['config']['auth'] = true
 node.set['mongodb']['ruby_gems'] = {
   :mongo => '1.12.5',
