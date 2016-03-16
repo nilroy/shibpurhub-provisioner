@@ -1,4 +1,4 @@
-# 2k6-provisioner
+# Shibpurhub-provisioner
 This repo contains tools and chef cookbooks to install and maintain 2k6 systems.
 
 ##Supporting OS
